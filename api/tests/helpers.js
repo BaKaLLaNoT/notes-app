@@ -26,7 +26,7 @@ const initialNotes = [
 const getAllContentFromNotes = async () => {
   const response = await api.get('/api/notes')
   return {
-    content: (contents = response.body.map((note) => note.content)),
+    contents: (response.body.map((note) => note.content)),
     response
   }
 }

@@ -64,7 +64,7 @@ test('a note can be deleted', async () => {
   const noteToDelete = notes[0]
   await api.delete(`/api/notes/${noteToDelete.id}`).expect(204)
 
-  const { response: secondResponse } = await getAllContentFromNotes()
+  const { contents, response: secondResponse } = await getAllContentFromNotes()
   expect(secondResponse.body).toHaveLength(initialNotes.length - 1)
   expect(contents).not.toContain(noteToDelete.content)
 })
