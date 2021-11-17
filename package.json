@@ -14,6 +14,7 @@
   "scripts": {
     "build": "SKIP_PREFLIGHT_CHECK=true npm run build --workspace=app",
     "start": "npm run start --workspace=api",
+    "dev:app": "npm run start --workspace=app",
     "dev:api": "npm run build && npm run dev --workspace=api",
     "lint": "eslint ./api ./app"
   },
