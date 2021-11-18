@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter, Routes, Route, Link, Outlet } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
 import { NoteDetail } from './components/NoteDetail'
 import Notes from './Notes'
 import Login from './Login'
@@ -46,10 +46,9 @@ const App = () => {
         <Route path='/notes/:noteId' element={<NoteDetail notes={notes} />} />
         <Route path='/notes' element={<Notes />} />
         <Route path='/users' element={<Users />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/login' element={user ? <Navigate replace to='/' /> : <Login />} />
         <Route path='/' element={<Home />} />
       </Routes>
-      <Outlet />
     </BrowserRouter>
   )
 }
