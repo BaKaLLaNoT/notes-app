@@ -1,34 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
 import { NoteDetail } from './components/NoteDetail'
+import { useUsers } from './hooks/useUser'
+import { useNotes } from './hooks/useNotes'
 import Notes from './Notes'
 import Login from './Login'
-import noteService from './services/notes'
 
 const Home = () => <h1>Home Page</h1>
 const Users = () => <h1>Users</h1>
 
 const App = () => {
-  const [notes, setNotes] = useState([])
-  const [user, setUser] = useState(null)
-
-  useEffect(() => {
-    noteService
-      .getAll()
-      .then((initialNotes) => {
-        setNotes(initialNotes)
-      })
-  }, [])
-
-  useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem('loggedNoteAppUser')
-    if (loggedUserJSON) {
-      const user = JSON.parse(loggedUserJSON)
-      setUser(user)
-      noteService.setToken(user.token)
-    }
-  }, [])
-
+  const { notes } = useNotes()
+  const { user } = useUsers()
   const inlineStyles = {
     padding: 5
   }
