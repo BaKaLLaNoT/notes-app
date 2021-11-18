@@ -1,16 +1,14 @@
 import React from 'react'
-import { BrowserRouter, Link, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Notes from './Notes'
 
 const Home = () => <h1>Home Page</h1>
-
 const Users = () => <h1>Users</h1>
 
 const App = () => {
   const inlineStyles = {
     padding: 5
   }
-
   return (
     <BrowserRouter>
       <header>
@@ -19,9 +17,9 @@ const App = () => {
         <Link to='/users' style={inlineStyles}>Users</Link>
       </header>
       <Routes>
-        <Route path='/notes' element={Notes} />
-        <Route path='/users'><Users /></Route>
-        <Route path='/'><Home /></Route>
+        <Route path='/notes' element={<Notes />} />
+        <Route path='/users' element={<Users />} />
+        <Route path='/' element={<Home />} />
       </Routes>
     </BrowserRouter>
   )
