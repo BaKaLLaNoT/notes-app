@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import Note from './components/Note'
 import NoteForm from './components/NoteForm'
 import { useNotes } from './hooks/useNotes'
-import { useUsers } from './hooks/useUser'
+import { useUser } from './hooks/useUser'
 
 const Notes = () => {
   const { notes, addNote, toggleImportanceOf } = useNotes()
-  const { user, logout } = useUsers()
+  const { user, logout } = useUser()
 
   const [showAll, setShowAll] = useState(true)
   const [errorMessage, setErrorMessage] = useState(null)
@@ -31,7 +31,7 @@ const Notes = () => {
   return (
     <div>
       <h1>Notes</h1>
-      {user ? (<NoteForm addNote={addNote} handleLogout={logout} />) : null}
+      {user ? <NoteForm addNote={addNote} handleLogout={logout} /> : null}
       <div>
         <button onClick={() => setShowAll(!showAll)}>
           show {showAll ? 'important' : 'all'}

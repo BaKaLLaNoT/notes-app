@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
 import { NoteDetail } from './components/NoteDetail'
-import { useUsers } from './hooks/useUser'
+import { useUser } from './hooks/useUser'
 import { useNotes } from './hooks/useNotes'
 import Notes from './Notes'
 import Login from './Login'
@@ -11,7 +11,7 @@ const Users = () => <h1>Users</h1>
 
 const App = () => {
   const { notes } = useNotes()
-  const { user } = useUsers()
+  const { user } = useUser()
   const inlineStyles = {
     padding: 5
   }
