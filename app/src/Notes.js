@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Table from 'react-bootstrap/Table'
 import Note from './components/Note'
 import NoteForm from './components/NoteForm'
 import { useNotes } from './hooks/useNotes'
@@ -31,21 +32,24 @@ const Notes = () => {
   return (
     <div>
       <h1>Notes</h1>
-      {user ? <NoteForm addNote={addNote} handleLogout={logout} /> : null}
+      {!user ? <NoteForm addNote={addNote} handleLogout={logout} /> : null}
       <div>
         <button onClick={() => setShowAll(!showAll)}>
           show {showAll ? 'important' : 'all'}
         </button>
       </div>
-      <ul>
-        {notesToShow.map((note, i) => (
-          <Note
-            key={i}
-            note={note}
-            toggleImportance={() => toggleImportanceOfNote(note.id)}
-          />
-        ))}
-      </ul>
+      <Table striped>
+        <tbody>
+          {notesToShow.map((note, i) => (
+            <tr key={note.id}>
+              <Note
+                note={note}
+                toggleImportance={() => toggleImportanceOfNote(note.id)}
+              />
+            </tr>
+          ))}
+        </tbody>
+      </Table>
     </div>
   )
 }

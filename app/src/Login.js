@@ -37,7 +37,6 @@ export default function Login () {
 
   return (
     <div>
-      <h1>Login</h1>
       <Notification message={errorMessage} />
       <LoginForm
         username={username}

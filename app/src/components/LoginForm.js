@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useField } from '../hooks/useField'
+import { Button, Form } from 'react-bootstrap'
 
 export default function LoginForm ({
   handleSubmit
@@ -8,23 +9,23 @@ export default function LoginForm ({
   const username = useField({ type: 'text' })
   const password = useField({ type: 'password' })
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <input
+    <Form onSubmit={handleSubmit}>
+      <Form.Group id='username'>
+        <Form.Control
           {...username}
           name='Username'
           placeholder='Username'
         />
-      </div>
-      <div>
-        <input
+      </Form.Group>
+      <Form.Group id='password'>
+        <Form.Control
           {...password}
           name='Password'
           placeholder='Password'
         />
-      </div>
-      <button id='form-login-button'>Login</button>
-    </form>
+      </Form.Group>
+      <Button id='form-login-button'>Login</Button>
+    </Form>
   )
 }
 
