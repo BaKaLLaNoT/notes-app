@@ -1,8 +1,11 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import { useNotes } from '../hooks/useNotes'
 
-export const NoteDetail = ({ notes }) => {
+export const NoteDetail = () => {
   const { noteId } = useParams()
+  const { notes } = useNotes()
+
   const note = notes.find(note => note.id === noteId)
   if (!note) { return null }
 
