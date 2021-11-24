@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { useField } from '../hooks/useField'
 import { Button, Form } from 'react-bootstrap'
+
+export const useField = ({ type }) => {
+  const [value, setValue] = useState('')
+
+  const onChange = event => {
+    setValue(event.target.value)
+  }
+  return { type, value, onChange }
+}
 
 export default function LoginForm ({
   handleSubmit
