@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Button, Form } from 'react-bootstrap'
 
 export const useField = ({ type }) => {
   const [value, setValue] = useState('')
@@ -12,28 +11,32 @@ export const useField = ({ type }) => {
 }
 
 export default function LoginForm ({
-  handleSubmit
+  handleSubmit, ...props
 }) {
-  const username = useField({ type: 'text' })
-  const password = useField({ type: 'password' })
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group id='username'>
-        <Form.Control
-          {...username}
+    <form onSubmit={handleSubmit}>
+      <div>
+        <input
+          type='text'
+          value={props.username}
           name='Username'
           placeholder='Username'
+          onChange={props.handleUsernameChange}
         />
-      </Form.Group>
-      <Form.Group id='password'>
-        <Form.Control
-          {...password}
+      </div>
+      <div>
+        <input
+          type='password'
+          value={props.password}
           name='Password'
           placeholder='Password'
+          onChange={props.handlePasswordChange}
         />
-      </Form.Group>
-      <Button id='form-login-button'>Login</Button>
-    </Form>
+      </div>
+      <button id='form-login-button'>
+        Login
+      </button>
+    </form>
   )
 }
 
